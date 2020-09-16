@@ -13,7 +13,7 @@ import {
 } from 'utils/constants';
 import { getMetaDataByOAuthClientId } from 'daos/oauthClientsDao';
 import { TIMESTAMP } from './constants';
-import { findOneUser } from 'daos/userDao';
+import { findOneUser } from 'daos/usersDao';
 
 export const getEnv = () => {
     switch (process.env.NODE_ENV) {

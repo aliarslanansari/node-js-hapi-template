@@ -21,6 +21,7 @@
         "@hapi/joi": "^16.x.x",
         "@hapi/joi-date": "^2.0.1",
         "@hapi/vision": "^5.5.4",
+        "apisauce": "^1.1.2",
         "dotenv": "^8.2.0",
         "esm": "^3.2.25",
         "hapi-auth-bearer-token": "^6.1.6",
