@@ -6,5 +6,5 @@ CREATE TABLE drivers
      created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
      updated_at      DATETIME NULL on UPDATE CURRENT_TIMESTAMP,
      CONSTRAINT cab_id_check FOREIGN KEY (current_cab_id) 
-     REFERENCES cab (id) ON UPDATE CASCADE
+     REFERENCES cabs (id) ON UPDATE CASCADE
   );

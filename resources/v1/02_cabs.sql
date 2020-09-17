@@ -1,4 +1,4 @@
-CREATE TABLE cab 
+CREATE TABLE cabs
   ( 
      id              INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
      reg_no          VARCHAR (32) NOT NULL UNIQUE, 

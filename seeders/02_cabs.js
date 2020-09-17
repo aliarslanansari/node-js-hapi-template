@@ -20,7 +20,7 @@ module.exports = {
                 longitude: 73.804488
             }
         ];
-        return queryInterface.bulkInsert('cab', arr, {});
+        return queryInterface.bulkInsert('cabs', arr, {});
     },
-    down: queryInterface => queryInterface.bulkDelete('cab', null, {})
+    down: queryInterface => queryInterface.bulkDelete('cabs', null, {})
 };
