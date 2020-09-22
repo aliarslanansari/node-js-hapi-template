@@ -28,11 +28,15 @@ export const scopeAllowedSchema = Joi.string().valid(
     ...Object.keys(SCOPE_TYPE)
 );
 
-export const stringSchema = Joi.string().required();
+export const stringSchema = Joi.string()
+    .required()
+    .trim();
 
 export const stringSchemaOptional = Joi.string().optional();
 
-export const emailAllowedSchema = Joi.string().email({ tlds: { allow: true } });
+export const emailAllowedSchema = Joi.string().email({
+    tlds: { allow: false }
+});
 
 export const grantTypeSchema = Joi.string()
     .trim()
@@ -50,6 +54,11 @@ export const emailSchema = Joi.string().email({ tlds: { allow: true } });
 export const dateAllowedSchema = Joi.date();
 
 export const numberSchema = Joi.number();
+
+export const phoneNumber = Joi.string()
+    .length(10)
+    .pattern(/^[0-9]+$/)
+    .required();
 
 export const statusSchema = Joi.binary().length(2);
 

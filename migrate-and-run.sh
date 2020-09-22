@@ -11,13 +11,6 @@ fi
 npx sequelize db:migrate
 
 # seed data for local builds 
-if [ "$ENVIRONMENT_NAME" == "local" ]
-    then 
-        for file in seeders/*
-        do
-        :
-        ./node_modules/.bin/sequelize db:seed --seed $file
-        done
-fi
+npx sequelize db:seed:all
 
 yarn start:$ENVIRONMENT_NAME

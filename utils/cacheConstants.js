@@ -11,7 +11,7 @@ export const redisCache = {
     provider: {
         constructor: CatboxRedis,
         options: {
-            partition: 'temp_dev_data',
+            partition: 'cab_dev_data',
             host: process.env.REDIS_HOST,
             port: 6379
         }

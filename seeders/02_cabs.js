@@ -18,6 +18,15 @@ module.exports = {
                 base_rate: '399',
                 latitude: 18.480029,
                 longitude: 73.804488
+            },
+            {
+                reg_no: 'MH-12-NB-9999',
+                brand: 'Maruti Suzuki',
+                model: '800',
+                cab_type: 'mini',
+                base_rate: '100',
+                latitude: 18.489929,
+                longitude: 73.809988
             }
         ];
         return queryInterface.bulkInsert('cabs', arr, {});

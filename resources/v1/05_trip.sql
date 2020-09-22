@@ -7,7 +7,7 @@ CREATE TABLE trip
      start_loc_id         INT NOT NULL,
      end_loc_id         INT NOT NULL,    
      trip_start_time DATETIME NOT NULL,
-     trip_end_time DATETIME NOT NULL,
+     trip_end_time DATETIME,
      created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
      updated_at      DATETIME NULL on UPDATE CURRENT_TIMESTAMP,
      CONSTRAINT cab_id_ck FOREIGN KEY (cab_id) REFERENCES cabs (id) ON UPDATE CASCADE,

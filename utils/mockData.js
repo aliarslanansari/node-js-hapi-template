@@ -31,50 +31,37 @@ export const mockMetadata = (
 export const mockData = {
     MOCK_USER: {
         id: 1,
-        firstName: 'Sharan',
-        lastName: 'Salian',
+        name: 'Sharan',
         email: 'sharan@wednesday.is',
-        oauth_client_id: 1
+        phoneNo: '9807654321',
+        country: 'India',
+        gender: 'male',
+        dob: '1996-02-02'
     },
-    MOCK_OAUTH_CLIENTS: (metadataOptions = DEFAULT_METADATA_OPTIONS) => ({
+    MOCK_CAB: {
         id: 1,
-        clientId: 'TEST_CLIENT_ID_1',
-        clientSecret: 'TEST_CLIENT_SECRET',
-        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
-        ...mockMetadata(metadataOptions.scope, metadataOptions.resourceType)
-    }),
-    MOCK_OAUTH_CLIENT_TWO: {
-        id: 1,
-        clientId: 'TEST_CLIENT_ID_1',
-        clientSecret: 'TEST_CLIENT_SECRET',
-        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
-        ...mockMetadata(SCOPE_TYPE.USER)
+        regNo: 'MH-12-NB-9999',
+        brand: 'Maruti Suzuki',
+        model: '800',
+        cabType: 'mini',
+        baseRate: '100',
+        latitude: 18.489929,
+        longitude: 73.809988
     },
-    MOCK_OAUTH_CLIENT_SUPER_USER: {
+    MOCK_DRIVER: {
         id: 1,
-        clientId: 'TEST_CLIENT_ID_1',
-        clientSecret: 'TEST_CLIENT_SECRET',
-        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
-        ...mockMetadata(SCOPE_TYPE.SUPER_ADMIN)
+        name: 'aditya roy',
+        currentCabId: 1
     },
-    MOCK_OAUTH_CLIENT_RESOURCES: [
-        {
-            id: 1,
-            oauthClientId: 'TEST_CLIENT_ID_1',
-            resourceType: 'OAUTH_CLIENT_ID',
-            resourceId: 1
-        },
-        {
-            id: 1,
-            oauthClientId: 'TEST_CLIENT_ID_1',
-            resourceType: 'OAUTH_CLIENT_ID',
-            resourceId: 1
-        }
-    ],
-    MOCK_OAUTH_CLIENT_SCOPES: {
+    MOCK_TRIP: {
         id: 1,
-        oauthClientId: 'TEST_CLIENT_ID_1',
-        scope: SCOPE_TYPE.SUPER_ADMIN
+        riderId: 1,
+        driverId: 1,
+        cabId: 1,
+        startLocId: 1,
+        endLocId: 2,
+        tripStartTime: '2020-09-14 05:00:06',
+        tripEndTime: '2020-09-14 05:40:06'
     }
 };
 
