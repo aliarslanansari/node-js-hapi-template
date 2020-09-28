@@ -9,13 +9,15 @@ import inert from '@hapi/inert';
 import vision from '@hapi/vision';
 import Pack from './package.json';
 import rateLimiter from 'hapi-rate-limit';
+import authBearer from 'hapi-auth-bearer-token';
+import authConfig from 'config/auth';
 
 import cors from 'hapi-cors';
 import serverConfig from 'config/server';
 import dbConfig from 'config/db';
 import hapiPaginationOptions from 'utils/paginationConstants';
 import models from 'models';
-import { cachedUser } from 'utils/cacheMethods';
+import { cachedUser, cachedDriver } from 'utils/cacheMethods';
 
 const prepDatabase = async () => {
     await models.sequelize
@@ -54,6 +56,12 @@ const initServer = async () => {
         }
     ]);
 
+    await server.register({
+        plugin: authBearer
+    });
+    server.auth.strategy('bearer', 'bearer-access-token', authConfig);
+    server.auth.default('bearer');
+
     // Register pagignation plugin
     await server.register({
         plugin: hapiPagination,
@@ -71,6 +79,7 @@ const initServer = async () => {
     });
 
     await cachedUser(server);
+    await cachedDriver(server);
 
     // Register cors plugin
     await server.register({

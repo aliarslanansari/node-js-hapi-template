@@ -3,11 +3,13 @@ module.exports = {
         const arr = [
             {
                 name: 'aditya roy',
-                current_cab_id: 1
+                current_cab_id: 1,
+                oauth_client_id: 1
             },
             {
                 name: 'sidd puri',
-                current_cab_id: 2
+                current_cab_id: 2,
+                oauth_client_id: 2
             }
         ];
         return queryInterface.bulkInsert('drivers', arr, {});

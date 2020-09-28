@@ -62,6 +62,46 @@ export const mockData = {
         endLocId: 2,
         tripStartTime: '2020-09-14 05:00:06',
         tripEndTime: '2020-09-14 05:40:06'
+    },
+    MOCK_OAUTH_CLIENTS: (metadataOptions = DEFAULT_METADATA_OPTIONS) => ({
+        id: 1,
+        clientId: 'TEST_CLIENT_ID_1',
+        clientSecret: 'TEST_CLIENT_SECRET',
+        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
+        ...mockMetadata(metadataOptions.scope, metadataOptions.resourceType)
+    }),
+    MOCK_OAUTH_CLIENT_TWO: {
+        id: 1,
+        clientId: 'TEST_CLIENT_ID_1',
+        clientSecret: 'TEST_CLIENT_SECRET',
+        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
+        ...mockMetadata(SCOPE_TYPE.USER)
+    },
+    MOCK_OAUTH_CLIENT_SUPER_USER: {
+        id: 1,
+        clientId: 'TEST_CLIENT_ID_1',
+        clientSecret: 'TEST_CLIENT_SECRET',
+        grantType: GRANT_TYPE.CLIENT_CREDENTIALS,
+        ...mockMetadata(SCOPE_TYPE.SUPER_ADMIN)
+    },
+    MOCK_OAUTH_CLIENT_RESOURCES: [
+        {
+            id: 1,
+            oauthClientId: 'TEST_CLIENT_ID_1',
+            resourceType: 'OAUTH_CLIENT_ID',
+            resourceId: 1
+        },
+        {
+            id: 1,
+            oauthClientId: 'TEST_CLIENT_ID_1',
+            resourceType: 'OAUTH_CLIENT_ID',
+            resourceId: 1
+        }
+    ],
+    MOCK_OAUTH_CLIENT_SCOPES: {
+        id: 1,
+        oauthClientId: 'TEST_CLIENT_ID_1',
+        scope: SCOPE_TYPE.SUPER_ADMIN
     }
 };
 

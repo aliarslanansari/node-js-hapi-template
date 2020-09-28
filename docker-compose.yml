@@ -20,6 +20,6 @@ services:
         build: .
         restart: always
         ports:
-            - 8080:8080
+            - 9000:9000
         env_file:
             - .env.development

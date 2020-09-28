@@ -13,7 +13,7 @@ import {
 } from 'utils/constants';
 import { getMetaDataByOAuthClientId } from 'daos/oauthClientsDao';
 import { TIMESTAMP } from './constants';
-import { findOneUser } from 'daos/usersDao';
+import { server } from 'root/server.js';
 
 export const getEnv = () => {
     switch (process.env.NODE_ENV) {
@@ -119,7 +119,34 @@ export async function hasScopeOverUser({
         const metadata = await getMetaDataByOAuthClientId(oauthClientId);
         return await validateResources(metadata, USER_ID, userId);
     } else if (scope === SCOPE_TYPE.USER) {
-        const result = await findOneUser(userId);
+        const result = await server.methods.findOneUser(parseInt(userId));
+        if (!isNil(result)) {
+            return result.oauth_client_id === oauthClientId;
+        }
+        return false;
+    }
+}
+
+/** Checks whether the provided oauthClientId has scope over a given userId
+ * @param  {String} oauthClientId
+ * @param  {Number} userId
+ * @returns {Boolean}
+ */
+export async function hasScopeOverDriver({
+    oauthClientId,
+    userId,
+    scope = null
+}) {
+    if (scope === null) {
+        scope = await getScope(oauthClientId);
+    }
+    if (includes(SUPER_SCOPES, scope)) {
+        return true;
+    } else if (scope === SCOPE_TYPE.ADMIN) {
+        const metadata = await getMetaDataByOAuthClientId(oauthClientId);
+        return await validateResources(metadata, USER_ID, userId);
+    } else if (scope === SCOPE_TYPE.USER) {
+        const result = await server.methods.findOneDriver(parseInt(userId));
         if (!isNil(result)) {
             return result.oauth_client_id === oauthClientId;
         }
@@ -166,7 +193,9 @@ export async function validateScopeForRoute({ paths, request, credentials }) {
                     (route.customValidator
                         ? await route.customValidator({
                               oauthClientId: get(credentials, 'oauthClientId'),
-                              userId: get(request, 'params.userId'),
+                              userId:
+                                  get(request, 'params.userId') ||
+                                  get(request, 'params.driverId'),
                               scope
                           })
                         : true);
